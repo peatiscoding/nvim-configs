@@ -97,9 +97,12 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.incsearch = true
 
 -- Make line numbers default
-vim.wo.number = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 8
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -426,3 +429,10 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+
+-- customkeymaps
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
