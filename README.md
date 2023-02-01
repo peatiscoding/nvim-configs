@@ -11,5 +11,5 @@ Required:
 
 ## To use
 
-Simply copy this `init.lua` and paste it to your neovim's directory. (Typically: `~.config/nvim/init.lua`
+Simply copy this `init.lua` and paste it to your neovim's directory. (Typically: `~/.config/nvim/init.lua`
 
