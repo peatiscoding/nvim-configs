@@ -64,6 +64,27 @@ require('packer').startup(function(use)
       }
     end
   }
+  -- Auto pair for bracket's completion
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    "folke/trouble.nvim",
+    -- requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+ 
+  -- https://github.com/MunifTanjim/prettier.nvim
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -114,6 +135,10 @@ vim.o.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
+
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -437,6 +462,82 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Prettier Setup
+
+local null_ls = require("null-ls")
+
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+local event = "BufWritePost" -- or "BufWritePost"
+local async = event == "BufWritePost"
+
+null_ls.setup({
+  debug = true,
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.keymap.set("n", "<Leader>f", function()
+        vim.lsp.buf.format({
+          bufnr = vim.api.nvim_get_current_buf(), 
+          filter = function(cl) return cl.name == "null-ls" end,
+        })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({
+            bufnr = bufnr, async = async,
+            filter = function(cl) return cl.name == "null-ls" end,
+          })
+        end,
+        desc = "[lsp] format on save",
+      })
+    end
+
+    if client.supports_method("textDocument/rangeFormatting") then
+      vim.keymap.set("x", "<Leader>f", function()
+        vim.lsp.buf.format({
+          bufnr = vim.api.nvim_get_current_buf(),
+          filter = function(cl) return cl.name == "null-ls" end,
+        })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+    end
+  end,
+})
+--
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettierd', -- or `'prettierd'` (v0.22+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "yaml",
+  },
+  -- ["null-ls"] = {
+  --   condition = function()
+  --     return prettier.config_exists({
+  --       -- if `false`, skips checking `package.json` for `"prettier"` key
+  --       check_package_json = true,
+  --     })
+  --   end,
+  --   runtime_condition = function(params)
+  --     -- return false to skip running prettier
+  --     return true
+  --   end,
+  --   timeout = 5000,
+  -- }
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
