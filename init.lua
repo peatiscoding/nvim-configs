@@ -168,7 +168,6 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd [[colorscheme tokyonight]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -202,9 +201,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require("tokyonight").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
-  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  light_style = "moon", -- The theme is used when the background is set to light
-  transparent = false, -- Enable this to disable setting the background color
+  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  light_style = "night", -- The theme is used when the background is set to light
+  transparent = true, -- Enable this to disable setting the background color
 })
 
 -- Set lualine as statusline
@@ -252,6 +251,8 @@ require('telescope').setup {
     },
   },
 }
+
+vim.cmd [[colorscheme tokyonight]]
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
