@@ -87,7 +87,7 @@ require('packer').startup(function(use)
       }
     end
   }
- 
+
   -- https://github.com/MunifTanjim/prettier.nvim
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
@@ -97,6 +97,8 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  use { 'leafOfTree/vim-svelte-plugin' }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -121,6 +123,8 @@ if is_bootstrap then
   print '=================================='
   return
 end
+
+vim.g.vim_svelte_plugin_use_typescript = 1
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
@@ -398,7 +402,8 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {
+  },
 
   -- sumneko_lua = {
   --   Lua = {
@@ -543,6 +548,7 @@ prettier.setup({
     "scss",
     "typescript",
     "yaml",
+    "svelte",
   },
   -- ["null-ls"] = {
   --   condition = function()
