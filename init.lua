@@ -48,7 +48,10 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
--- vim.g.gruvbox_baby_telescope_theme = 1
+-- Make line numbers default
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 8
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
