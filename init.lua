@@ -684,6 +684,7 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
+vim.keymap.set("n", "<leader>dt", ':Trouble<CR>')
 vim.keymap.set("n", "<leader>m", ':MarkdownPreview<CR>')
 vim.keymap.set("n", "<leader>e", ':NvimTreeFindFile<CR>')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
