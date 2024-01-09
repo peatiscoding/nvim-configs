@@ -14,3 +14,11 @@ Required:
 
 Simply copy this `init.lua` and paste it to your neovim's directory. (Typically: `~/.config/nvim/init.lua`
 
+# Shortcuts!
+
+1. Terminal
+    - integrate with Terminal via `C-\`
+    - integrate with LazyGit via `C-g`
+1. Telescope
+    - search file in current directory using `<leader>sf` (Search File)
+    - search text in current directory using `<leader>sg` (Search Text)
