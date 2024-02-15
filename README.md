@@ -35,3 +35,5 @@ rm ~/.local/share/nvim/
     - automatically saved. but if needed use `<leader>f`
 1. Markdown Preview
     - open up markdown preview in browser `<leader>m`
+1. Codeium
+    - accept the suggestion via `<c-t>`
