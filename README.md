@@ -28,9 +28,12 @@ rm ~/.local/share/nvim/
 1. Terminal
     - integrate with Terminal via `C-\` (type `C-\` again to toggle back)
     - integrate with LazyGit via `C-g` (use `q` to quit)
+1. Hapoon
+    - mark with hapoon `<C-m>`
+    - list hapoon `<leader>hl`
 1. Telescope
-    - search file in current directory using `<leader>sf` (Search File)
-    - search text in current directory using `<leader>sg` (Search Text)
+    - search file in current project using `<leader>sf` (Search File)
+    - search text in current project using `<leader>sg` (Search Text)
 1. Formatter
     - automatically saved. but if needed use `<leader>f`
 1. Markdown Preview
