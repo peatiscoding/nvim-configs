@@ -51,7 +51,8 @@ vim.opt.shiftwidth = 2
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
+vim.g.exrc = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -683,8 +684,11 @@ cmp.setup {
 
 vim.keymap.set("n", "<leader>dt", ':Trouble<CR>')
 vim.keymap.set("n", "<leader>m", ':MarkdownPreview<CR>')
+vim.keymap.set("n", "<leader>pm", ':PlantumlOpen<CR>')
+vim.keymap.set("n", "<leader>ps", ':SwaggerPreview<CR>')
 vim.keymap.set("n", "<leader>e", ':NvimTreeFindFile<CR>')
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set({ "n", "v" }, "<leader>q", ':q<CR>')
 vim.keymap.set({ "n", "v" }, "<leader>w", ':w<CR>')
+
