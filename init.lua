@@ -220,20 +220,6 @@ require('lazy').setup({
   },
 
   -- {
-  --   -- Set lualine as statusline
-  --   'nvim-lualine/lualine.nvim',
-  --   -- See `:help lualine.txt`
-  --   opts = {
-  --     options = {
-  --       icons_enabled = false,
-  --       theme = 'onedark',
-  --       component_separators = '|',
-  --       section_separators = '',
-  --     },
-  --   },
-  -- },
-
-  -- {
   --   -- Add indentation guides even on blank lines
   --   'lukas-reineke/indent-blankline.nvim',
   --   -- Enable `lukas-reineke/indent-blankline.nvim`
@@ -241,9 +227,6 @@ require('lazy').setup({
   --   main = 'ibl',
   --   opts = {},
   -- },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -673,4 +656,3 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set({ "n", "v" }, "<leader>q", ':q<CR>')
 vim.keymap.set({ "n", "v" }, "<leader>w", ':w<CR>')
-
