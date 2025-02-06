@@ -2,12 +2,12 @@ return {
     'akinsho/toggleterm.nvim',
     version = "*",
     config = function()
-        local margin = 0.92
+        local margin = 0.90
         require('toggleterm').setup {
             open_mapping = [[<c-\>]],
             direction = 'float',
             float_opts = {
-                border = 'single',
+                border = 'curved',
                 width = math.floor(vim.o.columns * margin),
                 height = math.floor(vim.o.lines * margin),
             },
