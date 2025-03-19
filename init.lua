@@ -47,6 +47,7 @@ vim.g.maplocalleader = ' '
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+vim.o.splitright = true
 
 -- Make line numbers default
 vim.opt.number = true
