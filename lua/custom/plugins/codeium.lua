@@ -1,5 +1,9 @@
 return {
   'Exafunction/codeium.vim',
+  requires = {
+    "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+  },
   config = function()
     vim.g.codeium_filetypes = {
       ["*"] = true,
