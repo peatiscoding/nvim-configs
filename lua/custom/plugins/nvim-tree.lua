@@ -9,10 +9,10 @@ return {
     'nvim-tree/nvim-web-devicons', -- optional
   },
   config = function()
-    require("nvim-tree").setup({
+    require('nvim-tree').setup {
       view = {
         width = 40,
-        side = "right",
+        side = 'right',
       },
       renderer = {
         group_empty = true,
@@ -24,6 +24,8 @@ return {
         enable = true,
         update_cwd = true,
       },
-    })
-  end
+    }
+    -- Update Keybinding
+    vim.keymap.set('n', '<leader>e', ':NvimTreeFindFile<CR>', { desc = 'Toggle [E]xplorer' })
+  end,
 }

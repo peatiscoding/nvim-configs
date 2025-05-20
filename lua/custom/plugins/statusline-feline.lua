@@ -1,6 +1,6 @@
 return {
   'feline-nvim/feline.nvim',
-  config = function ()
+  config = function()
     require('feline').setup()
-  end
+  end,
 }

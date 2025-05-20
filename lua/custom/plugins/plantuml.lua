@@ -3,5 +3,8 @@ return {
   requires = {
     'tyru/open-browser.vim',
   },
-  cmd = { "PlantumlOpen" },
+  cmd = { 'PlantumlOpen' },
+  config = function()
+    vim.keymap.set('n', '<leader>pm', ':PlantumlOpen<CR>', { desc = '[P]review [P]lantUML' })
+  end,
 }
