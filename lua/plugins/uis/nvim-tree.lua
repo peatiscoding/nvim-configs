@@ -12,7 +12,7 @@ return {
     require('nvim-tree').setup {
       view = {
         width = 40,
-        side = 'right',
+        side = 'left',
       },
       renderer = {
         group_empty = true,
